@@ -1,0 +1,27 @@
+<a href="{{ url_for('get_users') }}">На главную</a>
+<div>Новый пользователь</div>
+
+<form action="/users" method="post">
+  <div>
+    <label>
+      Логин 
+      <input type="text" required name="nickname" value="{{ user.nickname  }}">
+    </label>
+  </div>
+  <div>
+    {% if errors %}
+    <h1 class=errors>
+        {% for error in errors %}
+        <div>{{ error }}</div>
+        {% endfor %}
+    </h1>
+    {% endif %}
+  </div>
+  <div>
+    <label>
+      Email
+      <input type="email" required name="email" value="{{ user.email }}">
+    </label>
+  </div>
+  <input type="submit" value="Зарегистрироваться">
+</form>

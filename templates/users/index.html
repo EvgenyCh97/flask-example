@@ -1,0 +1,39 @@
+<h1>Users</h1>
+<form action="/logout" method="post">
+    <input type="submit" value="Logout">
+</form>
+<a href="{{ url_for('hello_world') }}">На главную</a>
+<form action="/users" method="get">
+  <input type="search" name="search_name" value="{{ search }}" />
+  <input type="submit" value="Поиск" />
+</form>
+<div><a href="{{ url_for('create_user') }}">Зарегистрироваться</a></div>
+<div>
+    {% if messages %}
+    <h1 class=flashes>
+        {% for category, message in messages %}
+        <div class="{{ category }}">{{ message }}</div>
+    {% endfor %}
+    </h1>
+{% endif %}
+</div>
+<div>
+    <table>
+        <th>
+            <tr>
+                <td>ID</td>
+                <td>Логин</td>
+                <td>Email</td>
+                <td></td>
+            </tr>
+        </th>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td><a href="{{ url_for('get_user', id=user.id) }}">{{ user.nickname }}</a></td>
+            <td>{{ user.email }}</td>
+            <td><a href="{{ url_for('user_update', id=user.id) }}">Редактировать</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User update</title>
+</head>
+<body>
+<a href="{{ url_for('get_user', id=user.id) }}">Отмена</a>
+<form action="{{ url_for('user_update', id=user.id) }}" method="post">
+    <div>
+        <label>
+            Имя*
+            <input type="text" name="nickname" value="{{ user.nickname }}">
+        </label>
+        {% if errors %}
+          <h1>{{ errors.nickname }}</h1>
+      {% endif %}
+    </div>
+    <div>
+        <label>
+            Email*
+            <input type="text" name="email" value="{{ user.email }}">
+        </label>
+        {% if errors %}
+          <h1>{{ errors.email }}</h1>
+      {% endif %}
+    </div>
+    <input type="submit" value="Обновить">
+</form>
+</body>
+</html>

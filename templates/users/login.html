@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="{{ url_for('user_login') }}" method="post">
+        <input type="email" required name="email" value="{{ email }}">
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>
